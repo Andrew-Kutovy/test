@@ -1,0 +1,56 @@
+.block {
+    display: flex;
+    flex-direction: row;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    width: 300px;
+    border: 1px solid black;
+}
+
+.main > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 10px 5px;
+}
+
+.main > .stat {
+    display: flex;
+    width: 25%;
+}.main > .prod {
+    display: flex;
+    width: 21.5%;
+}.main > .id {
+    display: flex;
+    width: 12.5%;
+}.main > .name {
+    display: flex;
+    width: 41.5%;
+}
+
+
+.navigate {
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+}
+
+.block {
+    margin: 0 10px ;
+}
+
+select {
+    background-color: transparent; /* Делаем фон прозрачным */
+    border: none; /* Убираем границу */
+    outline: none;
+    border-bottom: 1px solid #000;
+    visibility: hidden;
+}
+
+.block:hover select {
+    visibility: visible; /* Показываем селекты при наведении на .block */
+}

@@ -1,0 +1,98 @@
+body, html {
+    display: flex;
+    height: 100%;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo_element {
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    justify-content: space-around;
+    margin: 0 10px;
+}
+.todo_element > * {
+    margin-left: 5px;
+}
+
+.todo_element > .stat {
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+}.todo_element > .prod {
+     display: flex;
+     flex-direction: row;
+     width: 21.5%;
+ }.todo_element > .id {
+      display: flex;
+      flex-direction: row;
+      width: 12.5%;
+  }.todo_element > .name {
+       display: flex;
+       flex-direction: row;
+       width: 41.5%;
+   }
+
+
+
+.block {
+    /*display: flex;*/
+    /*border: 1px solid black;*/
+    /*width: 300px;*/
+}
+
+.menu {
+
+}
+
+.list {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+
+.themeToggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.themeToggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 34px;
+    cursor: pointer;
+}
+.slider:before {
+    position: absolute;
+    content: '';
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
