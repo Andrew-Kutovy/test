@@ -43,13 +43,13 @@ body, html {
     display: flex;
     flex-direction: row;
     width: 300px;
-    justify-content: space-around;
+    /*justify-content: space-around;*/
     margin: 0 10px;
     transition: background-color 0.3s ease;
 }
 
 .todo_target > * {
-    margin-left: 5px;
+    /*margin-left: 5px;*/
 }
 .todo_target > .stat,
 .todo_target > .prod,
