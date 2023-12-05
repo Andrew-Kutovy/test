@@ -2,6 +2,7 @@ import {todosActionTypes} from "../action/todosAction";
 
 const initialState = {
     todos: [],
+    selectedTodos: [],
 }
 
 const todosReducer = (state = initialState, action) => {
@@ -21,6 +22,14 @@ const todosReducer = (state = initialState, action) => {
             return {
                 ...state,
                 todos: updatedTodos,
+            };
+        case todosActionTypes.TOGGLE_SELECTED_TODO:
+            const selectedTodoIndex = state.selectedTodos.indexOf(action.payload);
+            return {
+                ...state,
+                selectedTodos: selectedTodoIndex === -1
+                    ? [...state.selectedTodos, action.payload]
+                    : state.selectedTodos.filter((item) => item !== action.payload),
             };
         default:
             return state;

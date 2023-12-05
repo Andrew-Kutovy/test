@@ -48,8 +48,8 @@ body, html {
     transition: background-color 0.3s ease;
 }
 
-.todo_target > * {
-    /*margin-left: 5px;*/
+.todo_target:hover .todo_del {
+    width: 100%;
 }
 .todo_target > .stat,
 .todo_target > .prod,
@@ -195,16 +195,19 @@ select {
 .todo_target > .prod {
     display: flex;
     flex-direction: row;
+    padding-left: 45px;
     width: 21.5%;
 }
 
 .todo_target > .id {
     display: flex;
     flex-direction: row;
+    padding-left: 25px;
     width: 12.5%;
 }
 .todo_target > .name {
     display: flex;
+    padding-left: 25px;
     flex-direction: row;
     width: 41.5%;
 }
@@ -218,6 +221,3 @@ select {
     visibility: visible;
 }
 
-.todo_del:hover {
-    background-color: white;
-}

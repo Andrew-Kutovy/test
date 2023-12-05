@@ -1,22 +1,15 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import style from '../TodosComponent.module.css';
+import {todosActions} from "../../../redux/action/todosAction";
 
 const Todo = () => {
     const todos = useSelector((state) => state.todos.todos);
-
-    const [selectedItems, setSelectedItems] = useState([]);
+    const selectedTodos = useSelector((state) => state.todos.selectedTodos);
+    const dispatch = useDispatch();
 
     const handleItemClick = (index) => {
-        setSelectedItems((prevSelected) => {
-            if (prevSelected.includes(index)) {
-                // Если элемент уже был выбран, убираем его из массива выделенных
-                return prevSelected.filter((item) => item !== index);
-            } else {
-                // Иначе добавляем элемент в массив выделенных
-                return [...prevSelected, index];
-            }
-        });
+        dispatch(todosActions.toggleSelectedTodo(index));
     };
 
     return (
@@ -26,7 +19,7 @@ const Todo = () => {
                     key={index}
                     onClick={() => handleItemClick(index)}
                     style={{
-                        backgroundColor: selectedItems.includes(index) ? 'yellow' : 'white',
+                        backgroundColor: selectedTodos.includes(index) ? 'yellow' : 'white',
                     }}
                 >
                     {todo}

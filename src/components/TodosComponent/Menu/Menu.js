@@ -11,6 +11,10 @@ const Menu = () => {
         addNewTodo(dispatch);
     };
 
+    const handleDeleteChecked = () => {
+
+    }
+
 
     return (
         <div className={style.menu_block}>
@@ -34,7 +38,7 @@ const Menu = () => {
             </div>
             <div className={style.navigate}>
                 <button onClick={handleAddNewTodo}>+</button>
-                <button>x</button>
+                <button onClick={handleDeleteChecked}>x</button>
             </div>
         </div>
     );

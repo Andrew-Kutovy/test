@@ -4,13 +4,15 @@ import React from "react";
 export const todosActionTypes = {
     SET_TODOS: 'SET_TODOS',
     ADD_TODO: 'ADD_TODO',
-    DEL_TODO: 'DEL_TODO'
+    DEL_TODO: 'DEL_TODO',
+    TOGGLE_SELECTED_TODO: 'TOGGLE_SELECTED_TODO',
 }
 
 export const todosActions = {
     setTodos: (todos) => ({type: todosActionTypes.SET_TODOS, payload: todos}),
     addTodo: (todo) => ({type: todosActionTypes.ADD_TODO, payload: todo}),
-    removeTodo: (todo) => ({type: todosActionTypes.DEL_TODO, payload: todo})
+    removeTodo: (todo) => ({type: todosActionTypes.DEL_TODO, payload: todo}),
+    toggleSelectedTodo: (index) => ({ type: todosActionTypes.TOGGLE_SELECTED_TODO, payload: index }),
 }
 
 export const addNewTodo = (dispatch) => {
@@ -18,9 +20,9 @@ export const addNewTodo = (dispatch) => {
         // Ваш код для обработки изменения состояния чекбокса
     };
     const handleDeleteTodo = () => {
-        // Ваш код для удаления тудушки
-        dispatch(todosActions.removeTodo(newTodo)); // Предполагается, что у вас есть действие removeTodo ваших todosActions
+        dispatch(todosActions.removeTodo(newTodo));
     };
+
     const newTodo =  [
         <div className={style.todo_element}>
             <div className={style.todo_target}>
