@@ -6,6 +6,7 @@ export const todosActionTypes = {
     ADD_TODO: 'ADD_TODO',
     DEL_TODO: 'DEL_TODO',
     TOGGLE_SELECTED_TODO: 'TOGGLE_SELECTED_TODO',
+    TOGGLE_CHECKBOX: 'TOGGLE_CHECKBOX',
 }
 
 export const todosActions = {
@@ -13,16 +14,14 @@ export const todosActions = {
     addTodo: (todo) => ({type: todosActionTypes.ADD_TODO, payload: todo}),
     removeTodo: (todo) => ({type: todosActionTypes.DEL_TODO, payload: todo}),
     toggleSelectedTodo: (index) => ({ type: todosActionTypes.TOGGLE_SELECTED_TODO, payload: index }),
+    toggleCheckbox: (index) => ({ type: todosActionTypes.TOGGLE_CHECKBOX, payload: index }),
 }
 
 export const addNewTodo = (dispatch, idInputRef, nameInputRef) => {
-    const handleCheckboxChange = () => {
-        // код для обработки изменения состояния чекбокса
-    };
+    const handleCheckboxChange = () => dispatch(todosActions.toggleCheckbox());
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            // Переключение фокуса на "Название" только если ID не пусто
             const idValue = idInputRef.current.value.trim();
             if (idValue !== '' && !isNaN(idValue)) {
                 nameInputRef.current.focus();
@@ -32,66 +31,34 @@ export const addNewTodo = (dispatch, idInputRef, nameInputRef) => {
 
     const handleNameKeyDown = (event) => {
         if (event.key === 'Enter') {
-            // Получение значения Названия из рефа
             const nameValue = nameInputRef.current.value.trim();
 
-            // Проверка, что Название - не пусто и содержит более трех символов
             if (nameValue !== '' && nameValue.length > 3) {
-                // Ваш код для сохранения новой строки
                 console.log('Сохранено:', newTodo);
 
-                // Теряем фокус
                 nameInputRef.current.blur();
             } else {
-                // Вывод ошибки или другой обработки
                 console.log('Ошибка ввода Названия');
-                // Можно добавить вывод сообщения об ошибке или выполнение других действий
             }
         }
     };
 
-    const saveNewTodo = () => {
-        // Получение значения ID из рефа
-        const idValue = idInputRef.current.value;
-
-        // Проверка, что ID - это число и длина не менее одного символа
-        if (!isNaN(idValue) && idValue.trim() !== '') {
-            // код для сохранения новой строки
-            console.log('Сохранено:', newTodo);
-
-            // Теряем фокус
-            nameInputRef.current.blur();
-        } else {
-            // Вывод ошибки или другой обработки
-            console.log('Ошибка ввода ID');
-        }
-    };
 
     const handleNameBlur = () => {
-        // Получение значения Названия из рефа
         const nameValue = nameInputRef.current.value.trim();
 
-        // Проверка, что Название - не пусто и содержит более трех символов
         if (nameValue !== '' && nameValue.length > 3) {
-            // Ваш код для сохранения новой строки
             console.log('Сохранено:', newTodo);
 
-            // Теряем фокус
             nameInputRef.current.blur();
         } else {
-            // Вывод ошибки или другой обработки
             console.log('Ошибка ввода Названия');
-            // Можно добавить вывод сообщения об ошибке или выполнение других действий
         }
     };
-
-
 
     const handleDeleteTodo = () => {
         dispatch(todosActions.removeTodo(newTodo));
     };
-
-
 
     const newTodo =  [
         <div className={style.todo_element}>
@@ -117,5 +84,4 @@ export const addNewTodo = (dispatch, idInputRef, nameInputRef) => {
     }
 
     dispatch(todosActions.addTodo(newTodo));
-
 };

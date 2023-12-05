@@ -43,7 +43,6 @@ body, html {
     display: flex;
     flex-direction: row;
     width: 300px;
-    /*justify-content: space-around;*/
     margin: 0 10px;
     transition: background-color 0.3s ease;
 }
@@ -133,7 +132,6 @@ input:checked + .slider:before {
     flex-direction: row;
     height: 50px;
     width: 300px;
-    border: 1px solid black;
 }
 
 .main > div {

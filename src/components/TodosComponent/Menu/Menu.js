@@ -23,7 +23,6 @@ const Menu = () => {
     };
 
     useEffect(() => {
-        // Проверка на существование рефа перед вызовом focus()
         if (idInputRef.current) {
             idInputRef.current.focus();
         }

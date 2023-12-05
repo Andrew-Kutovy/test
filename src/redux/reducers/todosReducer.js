@@ -3,6 +3,7 @@ import {todosActionTypes} from "../action/todosAction";
 const initialState = {
     todos: [],
     selectedTodos: [],
+    checkboxStates: {},
 }
 
 const todosReducer = (state = initialState, action) => {
@@ -30,6 +31,15 @@ const todosReducer = (state = initialState, action) => {
                 selectedTodos: selectedTodoIndex === -1
                     ? [...state.selectedTodos, action.payload]
                     : state.selectedTodos.filter((item) => item !== action.payload),
+            };
+        case todosActionTypes.TOGGLE_CHECKBOX:
+            const checkboxStates = { ...state.checkboxStates };
+
+            checkboxStates[state.todos.length - 1] = !checkboxStates[state.todos.length - 1];
+
+            return {
+                ...state,
+                checkboxStates,
             };
         default:
             return state;
