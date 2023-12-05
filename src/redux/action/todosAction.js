@@ -17,7 +17,7 @@ export const todosActions = {
 
 export const addNewTodo = (dispatch) => {
     const handleCheckboxChange = () => {
-        // Ваш код для обработки изменения состояния чекбокса
+        // код для обработки изменения состояния чекбокса
     };
     const handleDeleteTodo = () => {
         dispatch(todosActions.removeTodo(newTodo));

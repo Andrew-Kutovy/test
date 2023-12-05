@@ -1,19 +1,24 @@
 import React from 'react';
 import style from '../TodosComponent.module.css';
-import {useDispatch} from "react-redux";
-import {addNewTodo} from "../../../redux/action/todosAction";
+import {useDispatch, useSelector} from "react-redux";
+import {addNewTodo, todosActions} from "../../../redux/action/todosAction";
 
 
 const Menu = () => {
     const dispatch = useDispatch()
+    const todos = useSelector((state) => state.todos.todos);
+    const selectedTodos = useSelector((state) => state.todos.selectedTodos);
 
     const handleAddNewTodo = () => {
         addNewTodo(dispatch);
     };
 
     const handleDeleteChecked = () => {
-
-    }
+        selectedTodos.forEach((index) => {
+            const todo = todos[index];
+            dispatch(todosActions.removeTodo(todo));
+        });
+    };
 
 
     return (
@@ -38,7 +43,9 @@ const Menu = () => {
             </div>
             <div className={style.navigate}>
                 <button onClick={handleAddNewTodo}>+</button>
-                <button onClick={handleDeleteChecked}>x</button>
+                {selectedTodos.length > 0 && (
+                    <button onClick={handleDeleteChecked}>x</button>
+                )}
             </div>
         </div>
     );
